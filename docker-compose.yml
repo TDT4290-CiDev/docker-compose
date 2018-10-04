@@ -3,11 +3,24 @@ services:
   gateway:
     build: ../api-gateway/nginx/
     image: api-gateway
+    networks:
+      - backend
+      - frontend
+    depends_on:
+      - workflow-block-service
+      - forms-editor-service
     ports:
-      - '8080:8080'
+    - '8080:80'
   workflow-block-service:
     build: ../workflow-block-service
     image: workflow-block-service
+    networks:
+      - backend
   forms-editor-service:
     build: ../forms-editor-service
     image: forms-editor-service
+    networks:
+      - backend
+networks:
+  backend:
+  frontend:
