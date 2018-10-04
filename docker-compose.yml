@@ -1,0 +1,13 @@
+version: '3'
+services:
+  gateway:
+    build: ../api-gateway/nginx/
+    image: api-gateway
+    ports:
+      - '8080:8080'
+  workflow-block-service:
+    build: ../workflow-block-service
+    image: workflow-block-service
+  forms-editor-service:
+    build: ../forms-editor-service
+    image: forms-editor-service
