@@ -10,6 +10,7 @@ services:
       - workflow-block-service
       - forms-editor-service
       - frontend
+      - workflow-editor-service
     ports:
     - '8080:80'
   workflow-block-service:
@@ -17,6 +18,18 @@ services:
     image: workflow-block-service
     networks:
       - backend
+  workflow-editor-service:
+    build: ../workflow-editor-service
+    image: workflow-editor-service
+    networks:
+      - backend
+      - workflow-editor
+    depends_on:
+      - workflow-editor-datastore
+  workflow-editor-datastore:
+    image: mongo:3.0.2
+    networks:
+      - workflow-editor
   forms-editor-service:
     build: ../forms-editor-service
     image: forms-editor-service
@@ -30,3 +43,4 @@ services:
 networks:
   backend:
   frontend:
+  workflow-editor:
