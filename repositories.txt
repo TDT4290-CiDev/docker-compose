@@ -4,3 +4,4 @@ workflow-block-service
 api-gateway
 forms-editor-service
 case-executor-service
+workflow-editor-service
