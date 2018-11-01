@@ -32,7 +32,7 @@ services:
     networks:
       - workflow-editor
   case-executor-service:
-    build: ../case-executor-service
+    build: ../case-executor-service/manager
     image: case-executor-service
     networks:
       - backend
