@@ -32,7 +32,9 @@ services:
     networks:
       - workflow-editor
   case-executor-service:
-    build: ../case-executor-service/manager
+    build:
+      context: ../case-executor-service
+      dockerfile: manager/Dockerfile
     image: case-executor-service
     networks:
       - backend
