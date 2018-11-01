@@ -14,11 +14,13 @@ services:
       - case-executor-service
     ports:
     - '8080:80'
+
   workflow-block-service:
     build: ../workflow-block-service
     image: workflow-block-service
     networks:
       - backend
+
   workflow-editor-service:
     build: ../workflow-editor-service
     image: workflow-editor-service
@@ -31,6 +33,7 @@ services:
     image: mongo:3.0.2
     networks:
       - workflow-editor
+
   case-executor-service:
     build:
       context: ../case-executor-service
@@ -41,15 +44,27 @@ services:
       - case-executor
     depends_on:
       - case-executor-datastore
+  case-executor-worker:
+    build:
+      context: ../case-executor-service
+      dockerfile: worker/Dockerfile
+    image: case-executor-worker
+    networks:
+      - case-executor
+      - backend
+    depends_on:
+      - case-executor-datastore
   case-executor-datastore:
     image: mongo:3.0.2
     networks:
       - case-executor
+
   forms-editor-service:
     build: ../forms-editor-service
     image: forms-editor-service
     networks:
       - backend
+
   frontend:
     build: ../frontend
     image: frontend
