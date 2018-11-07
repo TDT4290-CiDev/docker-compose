@@ -1,4 +1,3 @@
-docker-compose
 frontend
 workflow-block-service
 api-gateway
