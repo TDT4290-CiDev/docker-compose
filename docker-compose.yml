@@ -35,6 +35,8 @@ services:
     image: mongo:3.0.2
     networks:
       - workflow-editor
+    volumes:
+      - workflow-editor-data:/data/db
 
   case-executor-service:
     build:
@@ -60,6 +62,8 @@ services:
     image: mongo:3.0.2
     networks:
       - case-executor
+    volumes:
+      - case-executor-data:/data/db
 
   forms-editor-service:
     build: ../forms-editor-service
@@ -77,3 +81,6 @@ networks:
   frontend:
   workflow-editor:
   case-executor:
+volumes:
+  workflow-editor-data:
+  case-executor-data:
