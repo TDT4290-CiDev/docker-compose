@@ -18,6 +18,8 @@ services:
   workflow-block-service:
     build: ../workflow-block-service
     image: workflow-block-service
+    env_file:
+        -./.env
     networks:
       - backend
 
