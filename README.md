@@ -3,7 +3,7 @@
 This repository contains the `docker-compose` file necessary to build and run the CiDev application, along with a
 convenience script to fetch all necessary repositories at once.
 
-# Installation
+## Installation
 
 1. Make sure that [Docker](https://www.docker.com/get-started) is installed on your computer.
 2. Clone this repository. (Preferably clone it into an empty parent directory, as the entire project requires quite a
