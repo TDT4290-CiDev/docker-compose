@@ -1,3 +1,21 @@
+# CiDev Citizen Developer Platform
+
+This repository contains the `docker-compose` file necessary to build and run the CiDev application, along with a
+convenience script to fetch all necessary repositories at once.
+
+# Installation
+
+1. Make sure that [Docker](https://www.docker.com/get-started) is installed on your computer.
+2. Clone this repository. (Preferably clone it into an empty parent directory, as the entire project requires quite a
+few repositories, each constituting an additional folder.)
+3. Clone all the other repositories. If you have Python installed, this can be done quite easily by running the
+`pull_all_repos.py` script.
+4. Open a terminal window in the `docker-compose` folder, and build the project by running `docker-compose build`. This
+will take some time the first time you build, but subsequent builds will go quicker due to caching.
+5. Run `docker-compose up` to start the application. It is configured to bind to port 8080, and should be available at
+`localhost:8080` after successfully booting. If you want the server to continue running after closing the terminal, you
+can instead run `docker-compose up -d`. The `-d` flag starts the application detached from the current terminal.
+
 ## Set environment variables
 Some services need additional environment variables. These should be set in the .env-file.
 
