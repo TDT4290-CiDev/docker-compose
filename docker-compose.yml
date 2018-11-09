@@ -33,6 +33,7 @@ services:
       - workflow-editor-datastore
   workflow-editor-datastore:
     image: mongo:3.0.2
+    command: --smallfiles
     networks:
       - workflow-editor
     volumes:
@@ -60,6 +61,7 @@ services:
       - case-executor-datastore
   case-executor-datastore:
     image: mongo:3.0.2
+    command: --smallfiles
     networks:
       - case-executor
     volumes:
