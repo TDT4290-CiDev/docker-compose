@@ -72,6 +72,14 @@ services:
     image: forms-editor-service
     networks:
       - backend
+      - forms-editor
+  forms-editor-datastore:
+    image: mongo:3.0.2
+    command: --smallfiles
+    networks:
+      - forms-editor
+    volumes:
+      - forms-editor-data:/data/db
 
   frontend:
     build: ../frontend
@@ -83,6 +91,8 @@ networks:
   frontend:
   workflow-editor:
   case-executor:
+  forms-editor:
 volumes:
   workflow-editor-data:
   case-executor-data:
+  forms-editor-data:
