@@ -73,6 +73,8 @@ services:
     networks:
       - backend
       - forms-editor
+    depends_on:
+        - forms-editor-datastore
   forms-editor-datastore:
     image: mongo:3.0.2
     command: --smallfiles
@@ -81,18 +83,36 @@ services:
     volumes:
       - forms-editor-data:/data/db
 
+  forms-response-service:      
+    build: ../forms-response-service
+    image: forms-response-service
+    networks:
+      - backend
+      - forms-response
+  forms-response-datastore:
+    image: mongo:3.0.2
+    command: --smallfiles
+    networks:
+      - forms-response
+    volumes: 
+      - forms-response-data:/data/db
+
   frontend:
     build: ../frontend
     image: frontend
     networks:
       - frontend
+        
 networks:
   backend:
   frontend:
   workflow-editor:
   case-executor:
   forms-editor:
+  forms-response:
+
 volumes:
   workflow-editor-data:
   case-executor-data:
   forms-editor-data:
+  forms-response-data:
